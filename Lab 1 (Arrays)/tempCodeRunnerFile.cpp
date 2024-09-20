@@ -1,23 +1,33 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
-int secondLargest(int* arr, int n) {
-  int largest = INT_MIN;
-  int secondLargest = INT_MIN;
-  for (int i = 0; i < n; i++) {
-    if (arr[i] > largest) {
-      secondLargest = largest;
-      largest = arr[i];
-    } 
-    else if (arr[i] > secondLargest && arr[i] != largest) {
-      secondLargest = arr[i];
-    }
+int reverseArray(int arr[], int n) {
+  int i = 0, j = n - 1;
+  while (i < j) {
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+    i++;
+    j--;
   }
-  return secondLargest;
 }
 
 int main() {
-  int arr[6] = {10, 20, 30, 40, 50, 60};
-  cout << "Second largest element: " << secondLargest(arr, 6) << endl;
+  int n;
+  cout << "Enter number of elements: ";
+  cin >> n;
+
+  int arr[n];
+  cout << "Enter elements: " << endl;
+  for (int i = 0; i < n; i++) {
+    cin >> arr[i];
+  }
+
+  reverseArray(arr, n);
+
+  cout << "Reversed array: " << endl;
+  for (int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+  }
   return 0;
 }
